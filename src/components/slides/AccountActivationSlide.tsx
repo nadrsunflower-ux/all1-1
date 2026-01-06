@@ -2,86 +2,50 @@
 
 import { motion } from 'framer-motion';
 import AnimatedElement from './AnimatedElement';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { Users, UserCheck, TrendingUp, Target } from 'lucide-react';
 
 export default function AccountActivationSlide() {
   const stats = [
-    { label: '이전 팔로워', value: 2697, icon: Users, color: '#8892b0' },
-    { label: '현재 팔로워', value: 2737, icon: UserCheck, color: '#64ffda' },
-    { label: '증가', value: 40, suffix: '명', icon: TrendingUp, color: '#a78bfa' },
+    { icon: '👀', value: '18.7만', label: '조회수', change: '↑ 상승' },
+    { icon: '💬', value: '2.3천', label: '반응', change: '↑ 상승' },
+    { icon: '👥', value: '161', label: '새 팔로워', change: '↑ 상승' },
+    { icon: '🔄', value: '28', label: '공유 콘텐츠', change: '회원님이 공유' },
   ];
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center px-16 py-12">
+    <div className="w-full h-full flex flex-col items-start justify-start px-24 py-20">
       <AnimatedElement delay={0.1}>
-        <Badge className="mb-6 bg-[#a78bfa]/10 text-[#a78bfa] border border-[#a78bfa]/30">
-          마케팅 팀
-        </Badge>
+        <h2 className="text-[2.2rem] font-semibold mb-6 text-white flex items-center gap-4">
+          <span className="w-1 h-9 bg-gradient-to-b from-[#64ffda] to-[#4ecdc4] rounded-sm" />
+          2-1. 악센트 아이디 계정 활성화 및 인플루언서 협업
+        </h2>
       </AnimatedElement>
 
       <AnimatedElement delay={0.2}>
-        <h2 className="text-4xl font-bold mb-2 text-white">계정 활성화</h2>
+        <p className="text-[#8892b0] text-lg mb-8">
+          12월부터 <span className="text-[#64ffda] font-semibold">뿌리는 덕질 디퓨저</span> 런칭을 준비하면서 악센트 아이디 계정과 인플루언서 협업을 통해 계정을 활성화
+        </p>
       </AnimatedElement>
 
-      <AnimatedElement delay={0.3}>
-        <p className="text-[#8892b0] mb-10 text-lg">2024.12.17 - 2025.01.05 기준</p>
-      </AnimatedElement>
-
-      <div className="grid grid-cols-3 gap-8 w-full max-w-4xl mb-10">
+      <div className="grid grid-cols-4 gap-8 w-full mt-6">
         {stats.map((stat, index) => (
-          <AnimatedElement key={index} delay={0.4 + index * 0.1}>
-            <motion.div whileHover={{ scale: 1.05, y: -4 }}>
-              <Card className="bg-[#112240] border-[#1d3a6e] overflow-hidden">
-                <CardContent className="p-6 text-center relative">
-                  <motion.div
-                    className="absolute top-0 left-0 w-full h-1"
-                    style={{ backgroundColor: stat.color }}
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                  />
-                  <stat.icon className="w-8 h-8 mx-auto mb-3" style={{ color: stat.color }} />
-                  <motion.p
-                    className="text-4xl font-bold mb-2"
-                    style={{ color: stat.color }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    {stat.value.toLocaleString()}{stat.suffix || ''}
-                  </motion.p>
-                  <p className="text-[#8892b0] text-sm">{stat.label}</p>
-                </CardContent>
-              </Card>
+          <AnimatedElement key={index} delay={0.3 + index * 0.1}>
+            <motion.div
+              whileHover={{ y: -10, boxShadow: '0 20px 40px rgba(100, 255, 218, 0.1)' }}
+              className="bg-gradient-to-br from-[#64ffda]/10 to-[#4ecdc4]/5 border border-[#64ffda]/20 rounded-[20px] p-9 text-center transition-all duration-300"
+            >
+              <div className="text-[2.5rem] mb-4">{stat.icon}</div>
+              <div className="text-[2.8rem] font-bold text-[#64ffda] mb-2">{stat.value}</div>
+              <div className="text-base text-[#8892b0] mb-2">{stat.label}</div>
+              <div className="text-sm text-[#4ade80]">{stat.change}</div>
             </motion.div>
           </AnimatedElement>
         ))}
       </div>
 
       <AnimatedElement delay={0.8}>
-        <Card className="bg-[#112240] border-[#1d3a6e] w-full max-w-4xl">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <Target className="w-5 h-5 text-[#64ffda]" />
-                <span className="text-[#ccd6f6]">목표 달성률</span>
-              </div>
-              <span className="text-[#64ffda] font-bold">+1.5%</span>
-            </div>
-            <div className="relative">
-              <Progress value={75} className="h-3 bg-[#1d3a6e]" />
-              <motion.div
-                className="absolute top-0 left-0 h-3 rounded-full bg-gradient-to-r from-[#64ffda] to-[#a78bfa]"
-                initial={{ width: 0 }}
-                animate={{ width: '75%' }}
-                transition={{ delay: 1, duration: 1, ease: 'easeOut' }}
-              />
-            </div>
-          </CardContent>
-        </Card>
+        <p className="text-[#8892b0] mt-6 text-sm">
+          * 10~11월 대비 수치
+        </p>
       </AnimatedElement>
     </div>
   );

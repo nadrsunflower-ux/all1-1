@@ -2,93 +2,53 @@
 
 import { motion } from 'framer-motion';
 import AnimatedElement from './AnimatedElement';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
-import { ListChecks, ArrowRight, RefreshCw } from 'lucide-react';
 
 export default function AdditionalTasksSlide() {
   const tasks = [
     {
-      title: '인스타그램 하이라이트 업데이트',
-      description: '콘텐츠 정리 및 최신화',
+      icon: '📝',
+      title: 'GPA 코리아 리뷰 준비중',
+      description: '뿌디 진행 중, 가지고 있는 예산 범위 내에서 다양한 시도 예정',
     },
     {
-      title: '이벤트 관련 정리',
-      description: '진행 중인 이벤트 문서화',
+      icon: '🎨',
+      title: '악센트 아이디 배너 재디자인',
+      description: '뿌디가 추가된 만큼 새롭게 걸어둘 배너를 재디자인할 예정',
     },
     {
+      icon: '📋',
       title: '뿌덕디퓨저 예약관리 인수인계 매커니즘 확립',
-      description: '프로세스 표준화',
+      description: '체계적인 예약관리 시스템을 통한 원활한 인수인계 진행',
     },
   ];
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center px-16 py-12">
+    <div className="w-full h-full flex flex-col items-start justify-start px-24 py-20">
       <AnimatedElement delay={0.1}>
-        <Badge className="mb-6 bg-[#a78bfa]/10 text-[#a78bfa] border border-[#a78bfa]/30">
-          마케팅 팀
-        </Badge>
-      </AnimatedElement>
-
-      <AnimatedElement delay={0.2}>
-        <h2 className="text-4xl font-bold mb-10 text-white flex items-center gap-3">
-          <ListChecks className="w-10 h-10 text-[#64ffda]" />
-          추가 진행 사안
+        <h2 className="text-[2.2rem] font-semibold mb-10 text-white flex items-center gap-4">
+          <span className="w-1 h-9 bg-gradient-to-b from-[#64ffda] to-[#4ecdc4] rounded-sm" />
+          2-3. 추가적으로 진행되고 있는 사안
         </h2>
       </AnimatedElement>
 
-      <div className="space-y-6 w-full max-w-3xl">
+      <div className="space-y-6 w-full">
         {tasks.map((task, index) => (
-          <AnimatedElement key={index} delay={0.3 + index * 0.15}>
+          <AnimatedElement key={index} delay={0.2 + index * 0.15}>
             <motion.div
-              whileHover={{ scale: 1.02, x: 10 }}
-              className="relative"
+              whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', x: 5 }}
+              className="flex items-start gap-4 p-5 rounded-xl border border-white/5 transition-all duration-300"
             >
-              <Card className="bg-[#112240] border-[#1d3a6e] hover:border-[#64ffda]/50 transition-all duration-300">
-                <CardContent className="flex items-center gap-6 p-6">
-                  <motion.div
-                    className="w-12 h-12 rounded-full bg-[#64ffda]/10 border border-[#64ffda]/30 flex items-center justify-center flex-shrink-0"
-                    animate={{
-                      rotate: [0, 360],
-                    }}
-                    transition={{
-                      duration: 8,
-                      repeat: Infinity,
-                      ease: 'linear',
-                      delay: index * 0.5,
-                    }}
-                  >
-                    <RefreshCw className="w-6 h-6 text-[#64ffda]" />
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-[#ccd6f6] mb-1">
-                      {task.title}
-                    </h3>
-                    <p className="text-[#8892b0] text-sm">{task.description}</p>
-                  </div>
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ArrowRight className="w-6 h-6 text-[#64ffda]" />
-                  </motion.div>
-                </CardContent>
-              </Card>
+              <div className="w-[45px] h-[45px] bg-gradient-to-br from-[#64ffda]/20 to-[#64ffda]/10 rounded-[10px] flex items-center justify-center flex-shrink-0 text-2xl">
+                {task.icon}
+              </div>
+              <div>
+                <h5 className="text-white text-lg mb-2">{task.title}</h5>
+                <p className="text-[#8892b0] text-[0.95rem] leading-[1.6]">{task.description}</p>
+              </div>
             </motion.div>
           </AnimatedElement>
         ))}
       </div>
-
-      <AnimatedElement delay={0.8}>
-        <motion.p
-          className="mt-10 text-[#8892b0] text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          지속적인 업무 개선 및 체계화 진행 중
-        </motion.p>
-      </AnimatedElement>
     </div>
   );
 }

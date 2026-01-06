@@ -3,94 +3,55 @@
 import { motion } from 'framer-motion';
 import AnimatedElement from './AnimatedElement';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
-import { FileText, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function SupplySlide4() {
-  const features = [
-    'POP 형태로 트레이에 배치',
-    '주의사항 사전 전달',
-  ];
-
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center px-16 py-8">
+    <div className="w-full h-full flex flex-col items-start justify-start px-24 py-20">
       <AnimatedElement delay={0.1}>
-        <Badge className="mb-4 bg-[#a78bfa]/10 text-[#a78bfa] border border-[#a78bfa]/30">
-          마케팅 팀 - 용품 4
-        </Badge>
-      </AnimatedElement>
-
-      <AnimatedElement delay={0.2}>
-        <h2 className="text-4xl font-bold mb-8 text-white flex items-center gap-3">
-          <FileText className="w-10 h-10 text-[#64ffda]" />
-          채색 안내문 제작
+        <h2 className="text-[2.2rem] font-semibold mb-10 text-white flex items-center gap-4">
+          <span className="w-1 h-9 bg-gradient-to-b from-[#64ffda] to-[#4ecdc4] rounded-sm" />
+          준비물 (4) 채색 안내문 제작
         </h2>
       </AnimatedElement>
 
-      <div className="grid grid-cols-2 gap-8 w-full max-w-5xl">
-        <AnimatedElement delay={0.3} direction="left">
-          <Card className="bg-[#112240] border-[#1d3a6e] h-full">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-[#64ffda]">
-                <CheckCircle className="w-5 h-5" />
-                주요 내용
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-center gap-3 p-4 bg-[#64ffda]/10 rounded-lg border border-[#64ffda]/20"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + index * 0.15 }}
-                >
-                  <div className="w-8 h-8 rounded-full bg-[#64ffda]/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-[#64ffda] font-bold">{index + 1}</span>
-                  </div>
-                  <span className="text-[#ccd6f6]">{feature}</span>
-                </motion.div>
-              ))}
-            </CardContent>
-          </Card>
+      <div className="grid grid-cols-2 gap-12 w-full">
+        <AnimatedElement delay={0.2}>
+          <div className="pr-8">
+            <h4 className="text-[1.8rem] text-white mb-5">제작 방향</h4>
+            <p className="text-[#8892b0] text-lg leading-[1.8] mb-8">
+              POP 형태로 트레이에 배치하여<br />
+              고객이 쉽게 확인할 수 있도록 구성
+            </p>
+
+            <h4 className="text-[1.8rem] text-white mb-5">목적</h4>
+            <p className="text-[#8892b0] text-lg leading-[1.8]">
+              <span className="text-[#64ffda] font-semibold">주의사항 사전 전달</span>을 통해<br />
+              채색 과정에서 발생할 수 있는 문제 예방
+            </p>
+
+            <div className="flex gap-3 mt-5">
+              <Badge className="bg-[#64ffda]/15 text-[#64ffda] border-0 px-4 py-1.5 text-sm">
+                POP 형태
+              </Badge>
+              <Badge className="bg-[#64ffda]/15 text-[#64ffda] border-0 px-4 py-1.5 text-sm">
+                트레이 배치
+              </Badge>
+            </div>
+          </div>
         </AnimatedElement>
 
-        <AnimatedElement delay={0.4} direction="right">
-          <Card className="bg-[#112240] border-[#1d3a6e] h-full">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-[#a78bfa]">
-                <AlertCircle className="w-5 h-5" />
-                안내문 이미지
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="relative h-72 rounded-lg overflow-hidden border border-[#1d3a6e]">
-                <Image
-                  src="/images/notice.jpg"
-                  alt="채색 안내문"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </CardContent>
-          </Card>
+        <AnimatedElement delay={0.3}>
+          <div className="relative h-[350px] rounded-2xl overflow-hidden border border-white/10">
+            <Image
+              src="/images/notice.jpg"
+              alt="채색 안내문"
+              fill
+              className="object-contain"
+            />
+          </div>
         </AnimatedElement>
       </div>
-
-      <AnimatedElement delay={0.7}>
-        <motion.div
-          className="mt-6 flex items-center gap-3 px-6 py-3 bg-[#64ffda]/10 rounded-full border border-[#64ffda]/30"
-          whileHover={{ scale: 1.02 }}
-          animate={{
-            boxShadow: ['0 0 0px rgba(100, 255, 218, 0)', '0 0 15px rgba(100, 255, 218, 0.3)', '0 0 0px rgba(100, 255, 218, 0)']
-          }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <FileText className="w-5 h-5 text-[#64ffda]" />
-          <span className="text-[#ccd6f6]">트레이와 함께 배치하여 안내</span>
-        </motion.div>
-      </AnimatedElement>
     </div>
   );
 }

@@ -3,75 +3,47 @@
 import { motion } from 'framer-motion';
 import AnimatedElement from './AnimatedElement';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Image from 'next/image';
-import { BarChart3, TrendingUp, AlertCircle } from 'lucide-react';
 
 export default function FollowerInsightSlide() {
+  const timeSlots = [
+    { day: '월요일', time: '오후 6시 ~ 9시' },
+    { day: '수요일', time: '오후 9시 ~ 12시' },
+    { day: '금요일', time: '오후 6시 ~ 9시' },
+  ];
+
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center px-16 py-8">
+    <div className="w-full h-full flex flex-col items-start justify-start px-24 py-20">
       <AnimatedElement delay={0.1}>
-        <Badge className="mb-4 bg-[#a78bfa]/10 text-[#a78bfa] border border-[#a78bfa]/30">
-          마케팅 팀
-        </Badge>
+        <h2 className="text-[2.2rem] font-semibold mb-10 text-white flex items-center gap-4">
+          <span className="w-1 h-9 bg-gradient-to-b from-[#64ffda] to-[#4ecdc4] rounded-sm" />
+          팔로워 인사이트
+        </h2>
       </AnimatedElement>
 
       <AnimatedElement delay={0.2}>
-        <h2 className="text-4xl font-bold mb-8 text-white">팔로워 인사이트</h2>
-      </AnimatedElement>
+        <div className="bg-gradient-to-br from-[#64ffda]/10 to-[#64ffda]/[0.02] border border-[#64ffda]/20 rounded-2xl p-8 w-full">
+          <h4 className="text-[#64ffda] text-xl mb-6 flex items-center gap-3">
+            <span className="text-2xl">📊</span>
+            악센트 아이디 팔로워 활발 시간대
+          </h4>
 
-      <div className="grid grid-cols-2 gap-8 w-full max-w-5xl">
-        <AnimatedElement delay={0.3} direction="left">
-          <Card className="bg-[#112240] border-[#1d3a6e] h-full">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-[#64ffda]">
-                <BarChart3 className="w-5 h-5" />
-                상위 도시
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                <Image
-                  src="/images/2-1.jpg"
-                  alt="상위 도시 인사이트"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </CardContent>
-          </Card>
-        </AnimatedElement>
-
-        <AnimatedElement delay={0.4} direction="right">
-          <Card className="bg-[#112240] border-[#1d3a6e] h-full">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-[#a78bfa]">
-                <TrendingUp className="w-5 h-5" />
-                연령대별 분포
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                <Image
-                  src="/images/2-2-1.jpg"
-                  alt="연령대별 분포"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </CardContent>
-          </Card>
-        </AnimatedElement>
-      </div>
-
-      <AnimatedElement delay={0.6}>
-        <motion.div
-          className="mt-8 flex items-center gap-3 px-6 py-3 bg-[#64ffda]/10 rounded-full border border-[#64ffda]/20"
-          whileHover={{ scale: 1.02 }}
-        >
-          <AlertCircle className="w-5 h-5 text-[#64ffda]" />
-          <span className="text-[#ccd6f6]">인사이트 데이터 기반 타겟팅 전략 수립 진행 중</span>
-        </motion.div>
+          <div className="space-y-6 mt-6">
+            {timeSlots.map((slot, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 + index * 0.15 }}
+                className="flex items-center gap-4 text-[1.3rem]"
+              >
+                <Badge className="bg-[#64ffda]/15 text-[#64ffda] border-0 px-4 py-1.5 text-base">
+                  {slot.day}
+                </Badge>
+                <span className="text-[#c9d1d9]">{slot.time}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </AnimatedElement>
     </div>
   );

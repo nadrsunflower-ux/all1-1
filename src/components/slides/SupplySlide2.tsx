@@ -2,96 +2,78 @@
 
 import { motion } from 'framer-motion';
 import AnimatedElement from './AnimatedElement';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
-import { Package, XCircle, CheckCircle, ShoppingCart } from 'lucide-react';
 
 export default function SupplySlide2() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center px-16 py-8">
+    <div className="w-full h-full flex flex-col items-start justify-start px-24 py-20">
       <AnimatedElement delay={0.1}>
-        <Badge className="mb-4 bg-[#a78bfa]/10 text-[#a78bfa] border border-[#a78bfa]/30">
-          마케팅 팀 - 용품 2
-        </Badge>
-      </AnimatedElement>
-
-      <AnimatedElement delay={0.2}>
-        <h2 className="text-4xl font-bold mb-8 text-white flex items-center gap-3">
-          <Package className="w-10 h-10 text-[#64ffda]" />
-          알코올 솜 / 면봉
+        <h2 className="text-[2.2rem] font-semibold mb-10 text-white flex items-center gap-4">
+          <span className="w-1 h-9 bg-gradient-to-b from-[#64ffda] to-[#4ecdc4] rounded-sm" />
+          준비물 (2) 알코올 솜 또는 면봉
         </h2>
       </AnimatedElement>
 
-      <div className="grid grid-cols-2 gap-8 w-full max-w-5xl">
-        <AnimatedElement delay={0.3} direction="left">
-          <Card className="bg-[#112240] border-[#1d3a6e] h-full">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-[#f472b6]">
-                <XCircle className="w-5 h-5" />
-                문제점
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <motion.div
-                className="p-4 bg-[#f472b6]/10 rounded-lg border border-[#f472b6]/20"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                <p className="text-[#ccd6f6]">
-                  잘못 색칠한 부분을 지우는데<br />
-                  사용하는 알코올 솜이 부족해<br />
-                  화장솜에 소독용 에탄올을 적셔서 사용
-                </p>
-              </motion.div>
-              <div className="mt-4 relative h-48 rounded-lg overflow-hidden">
-                <Image
-                  src="/images/2-2-4.jpg"
-                  alt="주문 내역"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </CardContent>
-          </Card>
+      <div className="grid grid-cols-2 gap-12 w-full">
+        <AnimatedElement delay={0.2}>
+          <div className="pr-8">
+            <h4 className="text-[1.8rem] text-white mb-5">문제 발견</h4>
+            <p className="text-[#8892b0] text-lg leading-[1.8] mb-8">
+              칠한 부분이 손에 살짝 스치면 번지며, 손이나 물로는 잘 닦이지 않음
+            </p>
+
+            <h4 className="text-[1.8rem] text-white mb-5">해결책</h4>
+            <p className="text-[#8892b0] text-lg leading-[1.8]">
+              <span className="text-[#64ffda] font-semibold">1~3초 내에</span> 빠르게 알코올로 닦으면 지워짐!
+            </p>
+
+            <table className="w-full mt-5 border-separate border-spacing-0">
+              <thead>
+                <tr>
+                  <th className="bg-[#64ffda]/10 text-[#64ffda] font-semibold p-5 text-left rounded-tl-xl">방법</th>
+                  <th className="bg-[#64ffda]/10 text-[#64ffda] font-semibold p-5 text-left rounded-tr-xl">가격</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="text-[#c9d1d9] p-5 border-b border-white/10">알코올솜</td>
+                  <td className="text-[#c9d1d9] p-5 border-b border-white/10">개당 30~40원</td>
+                </tr>
+                <tr>
+                  <td className="text-[#c9d1d9] p-5 rounded-bl-xl">알코올면봉</td>
+                  <td className="text-[#c9d1d9] p-5 rounded-br-xl">개당 115원</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p className="mt-4 text-[#8892b0] text-sm">
+              두 개를 시범 테스트 후 편리한 것을 도입 예정
+            </p>
+          </div>
         </AnimatedElement>
 
-        <AnimatedElement delay={0.4} direction="right">
-          <Card className="bg-[#112240] border-[#1d3a6e] h-full">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-[#64ffda]">
-                <CheckCircle className="w-5 h-5" />
-                해결책
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <motion.div
-                className="p-4 bg-[#64ffda]/10 rounded-lg border border-[#64ffda]/20"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                <p className="text-[#ccd6f6]">
-                  기존 용품을 소진할 때까지<br />
-                  기존 방법을 유지하고<br />
-                  알코올 솜 대량 구매
-                </p>
-              </motion.div>
-            </CardContent>
-          </Card>
+        <AnimatedElement delay={0.3}>
+          <div className="flex flex-col gap-4 items-center">
+            <div className="relative h-[280px] w-full rounded-xl overflow-hidden border border-white/10">
+              <Image
+                src="/images/2-2-2.png"
+                alt="채색 테스트"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative h-[100px] w-auto rounded-lg overflow-hidden opacity-80">
+              <Image
+                src="/images/2-2-3.jpg"
+                alt="알코올 솜/면봉 구매"
+                width={300}
+                height={100}
+                className="object-contain rounded-lg"
+              />
+            </div>
+          </div>
         </AnimatedElement>
       </div>
-
-      <AnimatedElement delay={0.7}>
-        <motion.div
-          className="mt-6 flex items-center gap-3 px-6 py-3 bg-[#64ffda]/10 rounded-full border border-[#64ffda]/30"
-          whileHover={{ scale: 1.02 }}
-        >
-          <ShoppingCart className="w-5 h-5 text-[#64ffda]" />
-          <span className="text-[#ccd6f6]">용품 관리 체계화 진행 중</span>
-        </motion.div>
-      </AnimatedElement>
     </div>
   );
 }
