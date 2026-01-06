@@ -11,7 +11,7 @@ interface SlideWrapperProps {
 
 const variants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
+    x: direction > 0 ? 300 : -300,
     opacity: 0,
   }),
   center: {
@@ -19,7 +19,7 @@ const variants = {
     opacity: 1,
   },
   exit: (direction: number) => ({
-    x: direction < 0 ? 1000 : -1000,
+    x: direction < 0 ? 300 : -300,
     opacity: 0,
   }),
 };
@@ -33,7 +33,7 @@ export default function SlideWrapper({ children, direction, className = '' }: Sl
       animate="center"
       exit="exit"
       transition={{
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'tween', duration: 0.3, ease: 'easeOut' },
         opacity: { duration: 0.2 },
       }}
       className={`absolute inset-0 flex flex-col items-center justify-center ${className}`}

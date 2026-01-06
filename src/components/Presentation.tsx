@@ -109,7 +109,7 @@ export default function Presentation() {
       onTouchEnd={handleTouchEnd}
     >
       {/* Main slide content */}
-      <AnimatePresence mode="wait" custom={direction}>
+      <AnimatePresence initial={false} mode="popLayout" custom={direction}>
         <SlideWrapper key={currentSlide} direction={direction}>
           <CurrentSlideComponent />
         </SlideWrapper>
