@@ -31,7 +31,7 @@ export default function DiffuserProcessSlide() {
               <motion.div
                 className={`rounded-xl px-4 py-4 text-center min-w-[110px] ${
                   step.highlight
-                    ? 'bg-gradient-to-br from-[#64ffda] to-[#4ecdc4] shadow-lg shadow-[#64ffda]/30'
+                    ? 'border-2 border-[#64ffda] bg-[#64ffda]/20 shadow-lg shadow-[#64ffda]/30'
                     : 'bg-gradient-to-br from-[#64ffda]/15 to-[#64ffda]/5 border border-[#64ffda]/30'
                 }`}
                 animate={step.highlight ? {
@@ -41,15 +41,13 @@ export default function DiffuserProcessSlide() {
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <div
-                  className={`text-lg font-bold mb-1 ${
-                    step.highlight ? 'text-[#0a0a0a]' : 'text-[#64ffda]'
-                  }`}
+                  className={`text-lg font-bold mb-1 text-[#64ffda]`}
                 >
                   {step.number}
                 </div>
                 <div
                   className={`text-xs whitespace-pre-line leading-tight ${
-                    step.highlight ? 'text-[#0a0a0a] font-semibold' : 'text-white'
+                    step.highlight ? 'text-white font-semibold' : 'text-white'
                   }`}
                 >
                   {step.label}
