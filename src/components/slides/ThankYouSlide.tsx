@@ -80,15 +80,9 @@ export default function ThankYouSlide() {
         </motion.div>
       </AnimatedElement>
 
-      <AnimatedElement delay={0.7}>
-        <motion.p
-          className="absolute bottom-10 text-[#8892b0] text-sm"
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          마케팅 & 생일이벤트 팀 | 발표자: 유선화
-        </motion.p>
-      </AnimatedElement>
+      <p className="absolute bottom-10 text-[#8892b0] text-sm">
+        마케팅 & 생일이벤트 팀 | 발표자: 유선화
+      </p>
     </div>
   );
 }
