@@ -44,7 +44,10 @@ export default function MonthlyGoalsSlide() {
               <div
                 className="bg-gradient-to-br from-[#64ffda]/15 to-[#64ffda]/5 border border-[#64ffda]/30 rounded-[20px] p-8 text-center h-full"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-[#64ffda] to-[#4ecdc4] rounded-full flex items-center justify-center mx-auto mb-5">
+                <div
+                  className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5"
+                  style={{ background: 'linear-gradient(135deg, #64ffda 0%, #4ecdc4 100%)' }}
+                >
                   <span className="text-[#0a0a0a] font-bold text-[1.8rem]">{goal.month}</span>
                 </div>
 
